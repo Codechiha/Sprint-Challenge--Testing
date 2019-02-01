@@ -116,5 +116,14 @@ describe('server.js', () => {
             expect(response.status).toBe(422);
 
         })
+        it('should return code 201 on successful post', async () => {
+            let response = 
+            await request(server)
+            .post('/games')
+            .send({ title: 'Kingdom Hearts 2', genre: 'RPG Fantasy', releaseYear: '2002'})
+
+            expect(response.status).toBe(201);
+        })
+
     })
 })

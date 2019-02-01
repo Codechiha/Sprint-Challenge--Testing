@@ -41,4 +41,17 @@ server.get('/games', (req, res) => {
         .json(games)
 })
 
+server.post('/games', (req, res) => {
+    const { title, genre, releaseYear } = req.body
+
+    if( title && genre && releaseYear){
+        res.status(201).json({ 
+            title: `${title}`, 
+            genre: `${genre}`, 
+            releaseYear: `${releaseYear}`})
+    } else {
+        res.status(422).end()
+    }
+})
+
 module.exports = server
